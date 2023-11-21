@@ -39,7 +39,13 @@ let productos = [
   ),
 ];
 
-let carrito = [];
+const carritoFromLS = JSON.parse(localStorage.getItem("carrito"));
+let carrito;
+if (carritoFromLS) {
+  carrito = JSON.parse(localStorage.getItem("carrito"));
+} else {
+  carrito = [];
+}
 
 productos.forEach((producto) => {
   const nuevoProducto = document.createElement("div");
@@ -67,6 +73,7 @@ const agregarCarrito = (domProducto) => {
     (producto) => producto.codigo == domProducto.id
   );
   carrito.push(producto);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
   const nuevoProducto = document.createElement("div");
   nuevoProducto.id = producto.codigo;
   nuevoProducto.classList.add("card", "my-3");
@@ -93,7 +100,7 @@ const getCarrito = () => {
     nuevoProducto.innerHTML = `
       <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
-        <p class="card-text">${producto.descripcion}</p>
+        <p class="card-text">${producto.descripcion}</p>ñ
         <p><strong>Precio: $${producto.precio}</strong></p>
       </div>
         `;
@@ -105,3 +112,7 @@ const getCarrito = () => {
 };
 
 getCarrito();
+
+//https://campus.rollingcodeschool.com/mod/forum/view.php?id=22618
+// 11 de octubre 2022 - PRACTICA DE DOM Y WEB STORAGE
+// 1 hora 10 min
