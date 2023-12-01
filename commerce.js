@@ -83,7 +83,7 @@ const agregarCarrito = (domProducto) => {
   carrito.push(producto);
   localStorage.setItem("carrito", JSON.stringify(carrito));
   const nuevoProducto = document.createElement("div");
-  nuevoProducto.id = producto.codigo;
+  nuevoProducto.id = producto.codigo + "-cart";
   nuevoProducto.classList.add("card", "my-3");
   nuevoProducto.style.width = "300px";
   nuevoProducto.innerHTML = `
@@ -91,6 +91,8 @@ const agregarCarrito = (domProducto) => {
         <h5 class="card-title">${producto.nombre}</h5>
         <p class="card-text">${producto.descripcion}</p>
         <p><strong>Precio: $${producto.precio}</strong></p>
+        <button class="btn btn-warning" onclick="removeFav('${producto.codigo}-cart')"> ❌ </button>
+
       </div>
         `;
 
@@ -102,14 +104,15 @@ const agregarCarrito = (domProducto) => {
 const getCarrito = () => {
   carrito.forEach((producto) => {
     const nuevoProducto = document.createElement("div");
-    nuevoProducto.codigo = producto.codigo;
+    nuevoProducto.codigo = producto.codigo + "-cart";
     nuevoProducto.classList.add("card", "my-3");
     nuevoProducto.style.width = "300px";
     nuevoProducto.innerHTML = `
       <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
-        <p class="card-text">${producto.descripcion}</p>ñ
+        <p class="card-text">${producto.descripcion}</p>
         <p><strong>Precio: $${producto.precio}</strong></p>
+        <button class="btn btn-warning" onclick="removeFav('${producto.codigo}-cart')"> ❌ </button>
       </div>
         `;
 
@@ -125,6 +128,17 @@ const agregarFavorito = (domProducto) => {
   );
   favs.push(productoAGuardar);
   localStorage.setItem("favs", JSON.stringify(favs));
+};
+
+const removeFav = (codigo) => {
+  let productoABorrar = productos.find(
+    (producto) => producto.codigo == codigo.slice(0, 2)
+  );
+  carrito = carrito.filter(
+    (producto) => producto.codigo != productoABorrar.codigo
+  );
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  document.getElementById(codigo).remove();
 };
 
 getCarrito();
