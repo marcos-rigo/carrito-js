@@ -63,10 +63,10 @@ productos.forEach((producto) => {
 
   <img src="${producto.imagen}" class="card-img-top img-fluid" alt="${producto.nombre}">
   <div class="card-body">
-    <h5 class="card-title">${producto.nombre}</h5>
+    <h5 class="card-title"><a href='http://127.0.0.1:5500/detalle.html#${producto.codigo}'>${producto.nombre}</a></h5>
     <p class="card-text">${producto.descripcion}</p>
     <p><strong>Precio: $${producto.precio}</strong></p>
-    <button class="btn btn-primary" onclick="agregarCarrito(${producto.codigo})">Agregar al Carrito</button>
+    <button class="btn btn-primary mt-3" onclick="agregarCarrito(${producto.codigo})">Agregar al Carrito</button>
     <button class="btn btn-primary mt-3" onclick="agregarFavorito(${producto.codigo})">Favorito ❤</button>
   </div>
     `;
