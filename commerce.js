@@ -39,6 +39,8 @@ let productos = [
   ),
 ];
 
+localStorage.setItem("productos", JSON.stringify(productos));
+
 let carrito;
 let favs;
 const favsFromLS = JSON.parse(localStorage.getItem("favs"));
