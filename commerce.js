@@ -1,3 +1,8 @@
+const userLogged = localStorage.getItem("user");
+if (!userLogged) {
+  window.location.assign(window.location.origin + "/login.html");
+}
+
 class Producto {
   constructor(nombre, codigo, precio, descripcion, imagen) {
     this.nombre = nombre;
@@ -144,3 +149,8 @@ const removeFav = (codigo) => {
 };
 
 getCarrito();
+
+const logout = () => {
+  localStorage.removeItem("user");
+  window.location.assign(window.location.origin + "/login.html");
+};

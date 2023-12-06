@@ -22,7 +22,7 @@
           <input
             type="email"
             class="form-control"
-            id="values-email"
+            id="values-email-login"
             placeholder="name@example.com"
             maxlength="40"
             required
@@ -33,7 +33,7 @@
           <input
             type="password"
             class="form-control"
-            id="values-password"
+            id="values-password-login"
             placeholder="Password"
             maxlength="16"
             minlength="6"
@@ -43,6 +43,101 @@
         </div>
         <button type="submit" class="btn btn-warning mt-3">Ingresar</button>
       </form>
+
+      <a
+        class="mt-5 text-light fw-bold"
+        data-bs-toggle="modal"
+        data-bs-target="#register-modal"
+        href=""
+        >Registrate acá</a
+      >
+
+      <!-- Modal de registro-->
+      <div
+        class="modal fade"
+        id="register-modal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Registro</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="register-body">
+              <form onsubmit="register(event)">
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="values-name"
+                    placeholder="Pedro Perez"
+                    maxlength="40"
+                    required
+                  />
+                  <label for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="values-age"
+                    placeholder="Your age"
+                    max="120"
+                    min="16"
+                    required
+                  />
+                  <label for="floatingInput">Edad</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="values-email"
+                    placeholder="name@example.com"
+                    maxlength="40"
+                    required
+                  />
+                  <label for="floatingInput">Correo electrónico</label>
+                </div>
+                <div class="form-floating">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="values-password"
+                    placeholder="Password"
+                    maxlength="16"
+                    minlength="6"
+                    required
+                  />
+                  <label for="floatingPassword">Contraseña</label>
+                </div>
+                <div class="form-floating">
+                  <input
+                    type="password"
+                    class="form-control mt-3"
+                    id="values-password-2"
+                    placeholder="Password"
+                    maxlength="16"
+                    minlength="6"
+                    required
+                  />
+                  <label for="floatingPassword">Repita contraseña</label>
+                </div>
+                <button type="submit" class="btn btn-warning mt-3">
+                  Ingresar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="login.js"></script>
