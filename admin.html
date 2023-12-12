@@ -12,14 +12,59 @@
     />
   </head>
   <body class="bg-dark text-white container m-3">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Commerce</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#carrito-modal"
+                >
+                  Carrito
+                </button>
+                <button type="button" class="nav-link" onclick="logout()">
+                  Cerrar Sesión
+                </button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./favs.html"> Favoritos </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <h1>Administración de Productos</h1>
-    <button
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#add-product"
-    >
-      Agregar
-    </button>
+    <div class="d-flex justify-content-end">
+      <button
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#add-product"
+      >
+        Agregar
+      </button>
+    </div>
     <table class="table text-light">
       <thead>
         <tr>
@@ -27,6 +72,7 @@
           <th scope="col">Nombre</th>
           <th scope="col">Descripción</th>
           <th scope="col">Precio</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -47,7 +93,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form onsubmit="addProduct(event)">
+            <form onsubmit="addProduct()">
               <div class="form-floating mb-3">
                 <input
                   type="text"
@@ -65,7 +111,7 @@
                   class="form-control"
                   id="values-description-product"
                   placeholder="Pedro Perez"
-                  maxlength="40"
+                  maxlength="100"
                   required
                 />
                 <label for="floatingInput">Descripción</label>
