@@ -1,6 +1,16 @@
-const userLogged = localStorage.getItem("user");
+const userLogged = JSON.parse(localStorage.getItem("user"));
 if (!userLogged) {
   window.location.assign(window.location.origin + "/login.html");
+} else if (userLogged.admin) {
+  //CREAR BOTON DE INGRESO AL MENU DE ADMINISTRACION
+  const adminMenu = document.createElement("li");
+  adminMenu.classList.add("nav-item");
+  adminMenu.innerHTML = `
+  <a class="nav-link active" aria-current="page" href="admin.html">
+  Administrar
+  </a>
+  `;
+  document.querySelector(".navbar-nav").appendChild(adminMenu);
 }
 
 class Producto {
