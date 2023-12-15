@@ -24,7 +24,10 @@ productos.forEach((producto) => {
   <td>${producto.nombre}</td>
   <td>${producto.descripcion}</td>
   <td>${producto.precio}</td>
-  <td>Acciones</td>
+  <td>
+  <button class="btn btn-success m-2">✏</button>
+  <button class="btn btn-warning m-2">❌</button>
+  </td>
 
     `;
   document.querySelector("tbody").appendChild(productRow);
