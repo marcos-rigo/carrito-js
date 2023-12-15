@@ -26,9 +26,8 @@ productos.forEach((producto) => {
   <td>${producto.precio}</td>
   <td>
   <button class="btn btn-success m-2">✏</button>
-  <button class="btn btn-warning m-2">❌</button>
+  <button class="btn btn-warning m-2" onclick = "deleteProduct('${producto.codigo}')">❌</button>
   </td>
-
     `;
   document.querySelector("tbody").appendChild(productRow);
 });
@@ -51,4 +50,13 @@ const addProduct = () => {
   productos.push(newProduct);
 
   localStorage.setItem("productos", JSON.stringify(productos));
+};
+
+//BORRADO DE PRODUCTOS
+const deleteProduct = (codigoARemover) => {
+  const productUpdated = productos.filter(
+    (producto) => producto.codigo != codigoARemover
+  );
+  localStorage.setItem("productos", JSON.stringify(productUpdated));
+  window.location.reload();
 };
