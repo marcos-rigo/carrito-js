@@ -25,7 +25,7 @@ productos.forEach((producto) => {
   <td>${producto.descripcion}</td>
   <td>${producto.precio}</td>
   <td>
-  <button class="btn btn-success m-2">✏</button>
+  <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#edit-modal" onclick = "fillFields('${producto.codigo}')">✏</button>
   <button class="btn btn-warning m-2" onclick = "deleteProduct('${producto.codigo}')">❌</button>
   </td>
     `;
@@ -59,4 +59,39 @@ const deleteProduct = (codigoARemover) => {
   );
   localStorage.setItem("productos", JSON.stringify(productUpdated));
   window.location.reload();
+};
+
+// EDITADO DE DATOS
+const fillFields = (codigoAEditar) => {
+  const producto = productos.find(
+    (producto) => producto.codigo == codigoAEditar
+  );
+
+  document.getElementById("values-name-edit").value = producto.nombre;
+  document.getElementById("values-description-edit").value =
+    producto.descripcion;
+  document.getElementById("values-price-edit").value = producto.precio;
+
+  document
+    .getElementById("edit-form")
+    .setAttribute("onsubmit", `editProduct('${producto.codigo}')`);
+};
+
+const editProduct = (codigoAEditar) => {
+  const name = document.getElementById("values-name-edit").value;
+  const description = document.getElementById("values-description-edit").value;
+  const price = document.getElementById("values-price-edit").value;
+
+  const productosActualizados = productos.filter(
+    (producto) => producto.codigo != codigoAEditar
+  );
+  const productoActualizado = new Producto(
+    name,
+    codigoAEditar,
+    price,
+    description
+  );
+  productosActualizados.push(productoActualizado);
+
+  localStorage.setItem("productos", JSON.stringify(productosActualizados));
 };

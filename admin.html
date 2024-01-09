@@ -79,7 +79,6 @@
     </table>
 
     <!-- MODAL DE AGREGAR PRODUCTO -->
-    <!-- Modal -->
     <div class="modal fade" id="add-product" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog text-dark">
         <div class="modal-content">
@@ -131,6 +130,63 @@
               <button type="submit" class="btn btn-warning mt-3">
                 Ingresar
               </button>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL DE EDITAR PRODUCTO -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog text-dark">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="add-product">Editar Producto</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="edit-form">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="values-name-edit"
+                  placeholder="Pedro Perez"
+                  maxlength="40"
+                  required
+                />
+                <label for="values-name-edit">Nombre</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="values-description-edit"
+                  placeholder="Pedro Perez"
+                  maxlength="100"
+                  required
+                />
+                <label for="values-description-edit">Descripción</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="values-price-edit"
+                  placeholder="Your age"
+                  min="0"
+                  required
+                />
+                <label for="values-price-edit">Precio</label>
+              </div>
+
+              <button type="submit" class="btn btn-warning mt-3">Editar</button>
             </form>
           </div>
           <div class="modal-footer"></div>
